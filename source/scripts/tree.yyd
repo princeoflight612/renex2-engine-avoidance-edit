@@ -1,3 +1,21 @@
++Prince Avoidance
+	+Easing
+		|tween_sine_in
+		|tween_sine_inout
+		|tween_sine_out
+		|tween_return_linear
+		|tween_linear
+	+Instance Manipulation
+		|instance_change_variable
+		|instance_move_to_polar
+		|instance_move_to
+		|instance_scale
+	+Avoidance
+		|avoidance_add_debug_key
+		|avoidance_jump_to_timing
+		|avoidance_add_attack
+	+Post Processing
+		|scrPostProcessing
 |engine_settings
 +CUSTOM
 	+game options
@@ -283,6 +301,7 @@
 	|sound_music_under_pos
 	|sound_play_synced
 +bonus/utility
+	|rlerp
 	|draw_cherry
 	|ease
 	|simple_collision
@@ -290,6 +309,7 @@
 	|screen_fade
 	|create_collision_groups
 	|example_trap_script
+	|draw_set_align
 	|make_afterimage
 +avoidance/miku
 	|timeline_miku

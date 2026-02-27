@@ -493,6 +493,22 @@
 	|SoundEvent
 	|DialogEngine
 	|Afterimage
++Prince Avoidance
+	+Avoidance Core
+		|objAvoidanceMarker
+		|objAvoidanceDrawController
+		|objSampleAvoidance
+	+Avoidance Bullets
+		|objAvoidanceCosmetic
+		|objAvoidanceBullet
+		|objAvoidance3DBullet
+		|objAvoidanceEntity
+	+Internal
+		|objChangeVariableCommand
+		|objMoveToPolarCommand
+		|objMoveCommand
+		|objScaleCommand
+	+Shader Manipulation
 |PlayerStart
 |Block
 |Platform

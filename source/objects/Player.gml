@@ -790,9 +790,15 @@ if (iframes) {
     flashing=iframes
     iframes-=1
 } else {
+
+    with (instance_place(x,y,objAvoidanceBullet)) {
+        if(killer) kill_player()
+    }
+
     with (instance_place(x,y,PlayerKiller)) {
         kill_player()
     }
+
     with (instance_place(x,y,PlayerKillerActive)) {
         if (active) kill_player()
     }

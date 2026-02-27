@@ -494,3 +494,15 @@ TrapDestroy
 VLineFlipper
 Afterimage
 ExampleNpc
+objSampleAvoidance
+objAvoidanceMarker
+objAvoidanceEntity
+objChangeVariableCommand
+objAvoidanceBullet
+objAvoidanceCosmetic
+objAvoidanceDrawController
+objAvoidance3DBullet
+objMoveCommand
+objMoveToPolarCommand
+
+objScaleCommand

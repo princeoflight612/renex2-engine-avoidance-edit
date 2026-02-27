@@ -441,3 +441,7 @@
 	|sprPlayerPortrait
 	|sprNpcPortrait
 	|sprNpc
++Prince Avoidance
+	|sprAvoidanceController
+	|sprAvoidanceMarker
+	|sprDrawController

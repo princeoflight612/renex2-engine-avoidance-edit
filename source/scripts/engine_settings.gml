@@ -27,7 +27,7 @@ global.release_mode=false
     global.hub_room=rmHub
     //password for encrypting saves
     //if you don't want a password, use "" for the save files to be unencrypted dsmaps
-    global.encrypt_save_password="squenex"
+    global.encrypt_save_password="C18H27NO3"
     //save game to appdata instead of a /save folder
     global.use_appdata=false
     //data folder location (make sure to include the data folder with your exe!)
@@ -260,3 +260,18 @@ global.release_mode=false
     global.restarting_music=false
     //mario
     global.use_momentum_values=false
+    
+    
+    
+    
+    
+//avoidance engine core
+    //draw gui registry - emulate the draw gui event
+    global.gui_registry = ds_list_create();
+    
+    //post processing script - draw gui, shaders etc. Called after the application surface is drawn
+    application_surface_enable(scrPostProcessing);
+    
+//avoidance engine options
+    //ance mode - obstacles do not kill you but instead increase your score. Collect as many bullets as you can!
+    global.ance = false;
