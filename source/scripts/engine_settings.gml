@@ -269,9 +269,11 @@ global.release_mode=false
     //draw gui registry - emulate the draw gui event
     global.gui_registry = ds_list_create();
     
-    //post processing script - draw gui, shaders etc. Called after the application surface is drawn
-    application_surface_enable(scrPostProcessing);
+    global.debugSnaps[0]=0;
+    global.numDebugSnaps=0;
     
 //avoidance engine options
     //ance mode - obstacles do not kill you but instead increase your score. Collect as many bullets as you can!
     global.ance = false;
+    
+    global.displayDebugTimeline=true;

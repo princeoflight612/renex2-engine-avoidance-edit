@@ -33,7 +33,9 @@ envelope_compose
 scrMakeCircle
 scrMakeShapes
 
-
+shader_push
+shader_pop
+shaders_clear
 
 
 
@@ -372,3 +374,5 @@ tween_return_linear
 instance_move_to
 instance_move_to_polar
 instance_scale
+shader_insert
+shEasyShaderExample

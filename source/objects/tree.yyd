@@ -509,6 +509,8 @@
 		|objMoveCommand
 		|objScaleCommand
 	+Shader Manipulation
+		|objPShaderChainElement
+		|objPShaderChain
 |PlayerStart
 |Block
 |Platform

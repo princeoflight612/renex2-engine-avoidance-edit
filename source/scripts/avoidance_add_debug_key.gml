@@ -11,8 +11,8 @@
 
 var key;key=argument[0];
 var timing;timing=argument[1];
-var opt_startX;
-var opt_startY;
+var opt_startX;opt_startX=-1;
+var opt_startY;opt_startY=-1;
 
 if(argument_count>2) opt_startX=argument[2];
 if(argument_count>3) opt_startY=argument[3];

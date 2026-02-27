@@ -5,7 +5,7 @@ action_id=603
 applies_to=self
 */
 /// Set the music used for the avoidance
-musicID=global.musFlamewall; //Music used, set your music here
+musicID="ddpboss"; //Music used, set your music here
 
 //Uncomment the following code if the music is loaded externally.
 //In this example, the file would be named "Music\Avoidance.ogg"
@@ -29,8 +29,8 @@ numTimings=0;
 attackNames=ds_list_create();
 attackTimings=ds_list_create();
 avoidance_add_attack("ATTACK1",0);
-avoidance_add_attack("ATTACK2",0);
-avoidance_add_attack("ATTACK3",0);
+avoidance_add_attack("ATTACK2",100);
+avoidance_add_attack("ATTACK3",200);
 
 avoidance_add_attack("END",20450);
 /*"/*'/**//* YYD ACTION
@@ -92,14 +92,6 @@ autoWarp=true;
 roomTo=rmClear; //set the room to go to at the end of the avoidance. Disabled if autoWarp is set to false;
 bossItem=-1; //set the boss item to award the player. Default is -1 => do not award any boss item
 secretItem=-1; //set the secret item to award the player. Default is -1 => do not award any secret item
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-///Add the instance to the gui draw list
-
-ds_list_add(global.gui_registry,id);
 #define Destroy_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -199,6 +191,10 @@ if(!instance_exists(Player)) exit;
 switch(ds_list_find_value(attackNames,attack)){ //Main attack loop
     case "ATTACK1":
     {
+        if(ct==1)
+        {
+            shader_push(shEasyShaderExample(),0.01);
+        }
         break;
     }
     case "ATTACK2":
@@ -253,7 +249,7 @@ ds_list_destroy(debugKeys);
 ds_list_destroy(debugKeyTimings);
 ds_list_destroy(debugKeyStartX);
 ds_list_destroy(debugKeyStartY);
-#define Other_11
+#define Trigger_Draw GUI
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=605

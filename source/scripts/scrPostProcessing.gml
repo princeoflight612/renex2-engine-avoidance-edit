@@ -1,42 +1,32 @@
 ///scrPostProcessing()
+///Visual post processing code and the draw GUI events. To add a draw GUI event to the object:
+///add user event 9 which contains all of the drawing code
+///add the instance to the gui registry ds_list in the create event: ds_list_add(global.gui_registry,id)
+
+///Shaders
+
+if(instance_exists(objPShaderChain)){
+    with(objPShaderChain){
+        event_user(9);
+    }
+}else{
+    draw_surface(application_surface,0,0);
+}
 
 //fire all of the "draw gui" events here
-
-
-
 var i;
 var n;n=ds_list_size(global.gui_registry);
 for(i=0;i<n;i+=1)
 {
     with(ds_list_find_value(global.gui_registry,i))
     {
-        event_user(1);
+        event_user(9);
     }
-}
-
-
-
-///Shaders
-
-if(instance_exists(objPShaderEffect)){
-
-    with(objPShaderEffect){
-        if(!surface_exists(surf)){
-            surf=surface_create(800,608);
-        }
-        surface_copy(surf,0,0,application_surface);
-        shader_pixel_set(shader);
-        shader_pixel_uniform_f("_intensity",intensity);
-        shader_pixel_uniform_f("_time",t/50);
-        draw_surface(surf,0,0);
-        shader_reset();
-
-    }
-}else{
-    draw_surface(application_surface,0,0);
 }
 
 ///Ance Score system controller draw - TODO move to controller object
+
+/*
 if(global.scoreVisible){
     draw_set_font(fntFileSmall);
     draw_set_align(1,1);
@@ -48,7 +38,10 @@ if(global.scoreVisible){
     //draw_text(32+6,32+6,"FC: "+string(global.fullCombo));
     //draw_text(32+6,64+6,"RANK: "+rankText[global.currentRank]);
 
-    draw_set_font(font12);
+    draw_set_font(fntFileSmall);
     draw_set_align(1,1);
 }
+
+*/
+
 draw_set_alpha(1);

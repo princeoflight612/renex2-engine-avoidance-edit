@@ -16,6 +16,11 @@
 		|avoidance_add_attack
 	+Post Processing
 		|scrPostProcessing
+	+Shaders
+		|shader_push
+		|shader_pop
+		|shader_insert
+		|shaders_clear
 |engine_settings
 +CUSTOM
 	+game options
@@ -343,6 +348,8 @@
 	|shader_tint
 	|shader_rainbow
 	|shader_snow
+	+prince
+		|shEasyShaderExample
 +dialog
 	+dialog engine
 		|de_begin
