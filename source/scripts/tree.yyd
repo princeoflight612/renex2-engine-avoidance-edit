@@ -14,8 +14,6 @@
 		|avoidance_add_debug_key
 		|avoidance_jump_to_timing
 		|avoidance_add_attack
-	+Post Processing
-		|scrPostProcessing
 	+Shaders
 		|shader_push
 		|shader_pop

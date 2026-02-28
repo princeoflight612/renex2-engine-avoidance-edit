@@ -266,9 +266,6 @@ global.release_mode=false
     
     
 //avoidance engine core
-    //draw gui registry - emulate the draw gui event
-    global.gui_registry = ds_list_create();
-    
     global.debugSnaps[0]=0;
     global.numDebugSnaps=0;
     
