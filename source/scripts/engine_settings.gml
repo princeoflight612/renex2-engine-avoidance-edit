@@ -269,6 +269,11 @@ global.release_mode=false
     global.debugSnaps[0]=0;
     global.numDebugSnaps=0;
     
+    //a global array to return multiple values from scripts, courtesy of Renex
+    globalvar RETURN;
+    RETURN[0]=0;
+    RETURN[1]=0;
+    
 //avoidance engine options
     //ance mode - obstacles do not kill you but instead increase your score. Collect as many bullets as you can!
     global.ance = false;

@@ -9,8 +9,9 @@
 		|instance_change_variable
 		|instance_move_to_polar
 		|instance_move_to
+		|instance_morph
 		|instance_scale
-	+Avoidance
+	+Avoidance Timing
 		|avoidance_add_debug_key
 		|avoidance_jump_to_timing
 		|avoidance_add_attack
@@ -19,6 +20,21 @@
 		|shader_pop
 		|shader_insert
 		|shaders_clear
+	+Shape Functions
+		|shaper_circle
+		|shaper_teardrop
+		|shaper_gear
+		|shaper_identity
+		|shaper_spiral
+		|shaper_flower
+		|shaper_shape
+		|shaper_sawblade
+		|shaper_heart
+		|shaper_infinity
+		|shaper_star
+	+Avoidance Utility
+		|spawn_3D_shape
+		|spawn_3D_circle
 |engine_settings
 +CUSTOM
 	+game options

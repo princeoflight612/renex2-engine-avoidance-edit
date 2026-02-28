@@ -795,6 +795,10 @@ if (iframes) {
         if(killer) kill_player()
     }
 
+    with (instance_place(x,y,objAvoidance3DBullet)) {
+        if(killer&&!z_killer||z<0) kill_player()
+    }
+
     with (instance_place(x,y,PlayerKiller)) {
         kill_player()
     }

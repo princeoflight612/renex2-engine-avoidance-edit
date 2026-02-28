@@ -508,3 +508,5 @@ objMoveToPolarCommand
 objScaleCommand
 objPShaderChain
 objPShaderChainElement
+objAvoidance3DShape
+objMorphCommand

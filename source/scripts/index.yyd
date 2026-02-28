@@ -37,7 +37,17 @@ shader_push
 shader_pop
 shaders_clear
 
-
+shaper_circle
+shaper_teardrop
+shaper_gear
+shaper_identity
+shaper_spiral
+shaper_flower
+shaper_shape
+shaper_sawblade
+shaper_heart
+shaper_infinity
+shaper_star
 
 
 
@@ -376,3 +386,6 @@ instance_move_to_polar
 instance_scale
 shader_insert
 shEasyShaderExample
+spawn_3D_circle
+spawn_3D_shape
+instance_morph

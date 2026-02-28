@@ -502,11 +502,13 @@
 		|objAvoidanceCosmetic
 		|objAvoidanceBullet
 		|objAvoidance3DBullet
+		|objAvoidance3DShape
 		|objAvoidanceEntity
 	+Internal
 		|objChangeVariableCommand
 		|objMoveToPolarCommand
 		|objMoveCommand
+		|objMorphCommand
 		|objScaleCommand
 	+Shader Manipulation
 		|objPShaderChainElement

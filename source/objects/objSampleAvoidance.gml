@@ -209,12 +209,22 @@ switch(ds_list_find_value(attackNames,attack)){ //Main attack loop
     {
         if(ct==1)
         {
-            shader_push(shEasyShaderExample(),0.01);
+            shader_push(shEasyShaderExample(),0.005);
+            var a;a =spawn_3D_circle(400,304,sprAvoidanceBulletSmall,0,200,0,0.5,24,"3D_CIRCLE_TEST");
+            a.dTheta=1;
         }
         break;
     }
     case "ATTACK2":
     {
+        if(ct==1)
+        {
+            shader_pop();
+            with(objAvoidance3DShape)
+            {
+                instance_morph(id,shaper_flower,4,100,tween_linear);
+            }
+        }
         break;
     }
     case "ATTACK3":

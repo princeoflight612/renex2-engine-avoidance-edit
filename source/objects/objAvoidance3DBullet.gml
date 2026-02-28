@@ -23,7 +23,9 @@ imageAlpha=1.0;
 tag="";
 
 xprev=x;
-yprev=y
+yprev=y;
+
+z_killer = true; //whether to control the killer value based on the z value of the bullet - true if z<0, false if z>0
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -48,11 +50,7 @@ action_id=603
 applies_to=self
 */
 event_inherited();
-if(z>0){
-    imageAlpha=0.5;
-}else{
-    imageAlpha=1.0;
-}
+
 imageAlpha=lerp(0.15,1.0,clamp(rlerp(100,-100,z),0,1))
 
 depth=floor(z);
@@ -62,6 +60,8 @@ image_yscale=baseScale*abs(cameraZ)/(z-cameraZ);
 
 
 image_alpha=baseAlpha*imageAlpha;
+
+
 
 //show_debug_message(baseScale);
 #define Draw_0
