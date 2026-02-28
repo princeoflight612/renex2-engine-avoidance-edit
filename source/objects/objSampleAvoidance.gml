@@ -29,10 +29,10 @@ numTimings=0;
 attackNames=ds_list_create();
 attackTimings=ds_list_create();
 avoidance_add_attack("ATTACK1",0);
-avoidance_add_attack("ATTACK2",100);
-avoidance_add_attack("ATTACK3",200);
+avoidance_add_attack("ATTACK2",200);
+avoidance_add_attack("ATTACK3",400);
 
-avoidance_add_attack("END",20450);
+avoidance_add_attack("END",2000);
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603
@@ -249,13 +249,14 @@ ds_list_destroy(debugKeys);
 ds_list_destroy(debugKeyTimings);
 ds_list_destroy(debugKeyStartX);
 ds_list_destroy(debugKeyStartY);
-#define Trigger_Draw GUI
+#define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
-action_id=605
-invert=0
-arg0=Draw GUI Event
+action_id=603
+applies_to=self
 */
+///draw nothing
+#define Trigger_Draw GUI
 /*"/*'/**//* YYD ACTION
 lib_id=1
 action_id=603

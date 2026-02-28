@@ -14,7 +14,6 @@ with (World) {
 
     custom_postprocessing()
 
-    //custom post processing shaders - TODO properly insert them into the pipeline
 
     //draw pause menu
     with (PauseMenu) event_user(0)

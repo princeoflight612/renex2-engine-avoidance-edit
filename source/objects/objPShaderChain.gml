@@ -28,6 +28,8 @@ action_id=603
 applies_to=self
 */
 ///do not fire this with the rest of draw gui events, instead always run it before
+surface_reset();
+
 var i;
 
 for(i =0;i<numShaders;i+=1){
@@ -78,3 +80,5 @@ for(i =0;i<numShaders;i+=1){
     //if(i==numShaders-1) draw_surface(targetSurf,0,0);
     if(i==numShaders-1) surface_copy(application_surface,0,0,targetSurf);
 }
+
+application_surface=surface_set("application_surface",global.APPwidth,global.APPheight)

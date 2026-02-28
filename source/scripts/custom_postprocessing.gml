@@ -4,10 +4,10 @@
 
 ///Shaders
 
-if(instance_exists(objPShaderChain)){
-    with(objPShaderChain){
-        event_user(9);
-    }
+
+with(objPShaderChain){
+    event_user(9);
 }
+
 
 draw_set_alpha(1);
