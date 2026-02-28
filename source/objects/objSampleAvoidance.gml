@@ -92,6 +92,14 @@ autoWarp=true;
 roomTo=rmClear; //set the room to go to at the end of the avoidance. Disabled if autoWarp is set to false;
 bossItem=-1; //set the boss item to award the player. Default is -1 => do not award any boss item
 secretItem=-1; //set the secret item to award the player. Default is -1 => do not award any secret item
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+///set up the variables for the timeline
+
+timeline_selected = false;
 #define Destroy_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -145,9 +153,17 @@ if(!global.release_mode){
         global.numDebugSnaps+=1;
         show_debug_message(string(t));
     }
-    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)&&mouse_check_button_pressed(mb_left)){ //Navigate the timeline by clicking on it
-        var trackPos;trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
-        avoidance_jump_to_timing(trackPos);
+    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)){ //Navigate the timeline by clicking on it
+        timeline_selected = true;
+        if(mouse_check_button_pressed(mb_left))
+        {
+
+            var trackPos;trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
+            avoidance_jump_to_timing(trackPos);
+        }
+    }else
+    {
+        timeline_selected = false;
     }
 
     //Jump to a debug snap by clicking on it
@@ -294,4 +310,20 @@ if(!global.release_mode&&global.displayDebugTimeline){
         draw_set_alpha(1);
     }
     highlight=-1;
+
+    ///Draw a semi-transparent tick, as well as a text indicator on the cursor's position if it's close enough to the timeline
+    if(timeline_selected)
+    {
+        var markPosition;markPosition=mouse_x-view_xview[0];
+        draw_set_alpha(0.5);
+        draw_rectangle_color(markPosition-0.8,32+8-12,markPosition+0.8,32+8+12,c_white,c_white,c_white,c_white,0);
+
+        var trackPos;trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
+        draw_text(markPosition,64,string(floor(trackPos)));
+
+        draw_set_alpha(1);
+
+
+    }
+
 }
