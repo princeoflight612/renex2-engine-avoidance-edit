@@ -1,10 +1,10 @@
-# renex² engine
+# renex² engine - Princeoflight Avoidance Edit
 
-A modern fork of various GM8 I Wanna Be The Guy fangame engines with hundreds of
-improvements and new features. Designed for quickly making games with minimal
-effort.
+A fork of renex² engine with several features implemented mainly for designing avoidance games, ported from the GMS1 avoidance engine at https://github.com/princeoflight612/Princeoflight-Avoidance-Engine.
 
-- [About the engine](README.txt)
-- [Get nightly version](https://github.com/omicronrex/renex2-engine/archive/refs/heads/standard.zip): Up-to-date download with the latest commits.
-- [Release notes](changelog.txt)
-- [Discord server](http://discord.gg/aWh9rFDHDA)
+Featuring:
+
+- An avoidance system suited for the clean separation of attacks and easy timing control
+- A post-processing shader system that supports layered effects (see shader_push() and shEasyShaderExample() )
+- Functions that move instances manipulate variables over time according to the desired easing function
+- "Fake-3D" bullet shapes with morphing capabilities
