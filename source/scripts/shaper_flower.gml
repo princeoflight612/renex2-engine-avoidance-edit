@@ -14,10 +14,5 @@ var THETA; THETA = 360*theta;
 
 
 ///Pack the values into an array and return them
-var a;
-RETURN[0]=0;
-RETURN[1]=0;
-
 RETURN[0]=R;
 RETURN[1]=THETA;
-

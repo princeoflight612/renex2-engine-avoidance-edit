@@ -17,12 +17,5 @@ var R; R = point_distance(0,0,X,Y);
 var THETA; THETA = point_direction(0,0,X,Y);
 
 ///Pack the values into an array and return them
-var a;
-RETURN[0]=0;
-RETURN[1]=0;
-
 RETURN[0]=R;
 RETURN[1]=THETA;
-
-
-
