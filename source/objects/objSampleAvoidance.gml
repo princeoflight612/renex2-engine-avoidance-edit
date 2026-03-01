@@ -100,6 +100,8 @@ applies_to=self
 ///set up the variables for the timeline
 
 timeline_selected = false;
+timeline_snapping = true; //set to snap to the start of the nearest attack
+timeline_snapping_window=16; //a window in frames
 #define Destroy_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -155,7 +157,7 @@ if(!global.release_mode){
         global.numDebugSnaps+=1;
         show_debug_message(string(t));
     }
-    if(point_in_rectangle(mousex,mousey,32,0,room_width-32,64)){ //Navigate the timeline by clicking on it
+    if(point_in_rectangle(mousex,mousey,32+8-12,0,room_width-32,32+8+12)){ //Navigate the timeline by clicking on it
         if(!timeline_selected)
         {
             timeline_selected = true;
@@ -164,7 +166,13 @@ if(!global.release_mode){
         if(mouse_check_button_pressed(mb_left))
         {
 
+
             var trackPos;trackPos=lerp(startTiming,endTiming,(mousex-32)/(room_width-64))
+
+            if(timeline_snapping)
+            {
+
+            }
             avoidance_jump_to_timing(trackPos);
         }
     }else
