@@ -14,6 +14,15 @@ numShaders=2;
 
 chain[0] = instance_create(0,0,objPShaderChainElement);
 chain[1] = instance_create(0,0,objPShaderChainElement);
+#define Destroy_0
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+///Clean up
+if(surface_exists(surf)) surface_free(surf);
+if(surface_exists(surf2)) surface_free(surf2);
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -21,6 +30,14 @@ action_id=603
 applies_to=self
 */
 t+=1;
+#define Other_5
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+///Call the destroy event to clean up
+instance_destroy();
 #define Other_19
 /*"/*'/**//* YYD ACTION
 lib_id=1
