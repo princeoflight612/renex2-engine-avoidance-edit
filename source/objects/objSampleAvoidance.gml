@@ -156,7 +156,11 @@ if(!global.release_mode){
         show_debug_message(string(t));
     }
     if(point_in_rectangle(mousex,mousey,32,0,room_width-32,64)){ //Navigate the timeline by clicking on it
-        timeline_selected = true;
+        if(!timeline_selected)
+        {
+            timeline_selected = true;
+            window_set_cursor(cr_none);
+        }
         if(mouse_check_button_pressed(mb_left))
         {
 
@@ -165,7 +169,11 @@ if(!global.release_mode){
         }
     }else
     {
-        timeline_selected = false;
+        if(timeline_selected)
+        {
+            timeline_selected = false;
+            window_set_cursor(cr_default);
+        }
     }
 
     //Jump to a debug snap by clicking on it
