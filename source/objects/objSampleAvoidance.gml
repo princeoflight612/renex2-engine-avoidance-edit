@@ -141,6 +141,8 @@ applies_to=self
 */
 ///Debug timeline and keys
 
+var mousex;mousex=mouse_room_x();
+var mousey;mousey=mouse_room_y();
 
 ///TODO change the cursor sprite to an indicator on the debug bar when hovering above it
 ///TODO implement snapping to the start of the nearest attack which would set the timer to attackTiming-1
@@ -153,12 +155,12 @@ if(!global.release_mode){
         global.numDebugSnaps+=1;
         show_debug_message(string(t));
     }
-    if(point_in_rectangle(mouse_x,mouse_y,32,0,room_width-32,64)){ //Navigate the timeline by clicking on it
+    if(point_in_rectangle(mousex,mousey,32,0,room_width-32,64)){ //Navigate the timeline by clicking on it
         timeline_selected = true;
         if(mouse_check_button_pressed(mb_left))
         {
 
-            var trackPos;trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
+            var trackPos;trackPos=lerp(startTiming,endTiming,(mousex-32)/(room_width-64))
             avoidance_jump_to_timing(trackPos);
         }
     }else
@@ -171,7 +173,7 @@ if(!global.release_mode){
     for(i=0;i<global.numDebugSnaps;i+=1){
         var snapX;snapX=room_width-64;
         var snapY;snapY=64+spacing*(i+1)
-        if(point_in_rectangle(mouse_x,mouse_y,snapX,snapY,snapX+64,snapY+spacing)){
+        if(point_in_rectangle(mousex,mousey,snapX,snapY,snapX+64,snapY+spacing)){
             highlight=i;
             if(mouse_check_button_pressed(mb_left)){
                 var trackPos;trackPos = global.debugSnaps[i];
@@ -290,16 +292,16 @@ applies_to=self
 */
 ///Debug timeline
 
-
+var mousex;mousex=mouse_room_x();
 ///TODO implement a transparent hovering cursor
 if(!global.release_mode&&global.displayDebugTimeline){
     draw_set_alpha(1);
     draw_set_color(c_white);
-    draw_rectangle_color(32,32,room_width-32,48,c_black,c_black,c_black,c_black,0);
-    var barPosition;barPosition=lerp(32,room_width-32,(t-startTiming)/(endTiming-startTiming));
+    draw_rectangle_color(32,32,global.GUIwidth-32,48,c_black,c_black,c_black,c_black,0);
+    var barPosition;barPosition=lerp(32,global.GUIwidth-32,(t-startTiming)/(endTiming-startTiming));
     draw_rectangle_color(barPosition-0.5,32+8-16,barPosition+0.5,32+8+16,c_white,c_white,c_white,c_white,0);
     for(i=0;i<numTimings;i+=1){ //Display attack timings
-        var markPosition;markPosition=lerp(32,room_width-32,(ds_list_find_value(attackTimings,i)-startTiming)/(endTiming-startTiming));
+        var markPosition;markPosition=lerp(32,global.GUIwidth-32,(ds_list_find_value(attackTimings,i)-startTiming)/(endTiming-startTiming));
 
         draw_set_alpha(0.7);
         draw_rectangle_color(markPosition-1.0,32+8-16,markPosition+1.0,32+8+16,c_white,c_white,c_white,c_white,0);
@@ -308,27 +310,26 @@ if(!global.release_mode&&global.displayDebugTimeline){
     draw_set_font(fntFileSmall);
     draw_set_color(c_white);
     draw_set_align(-1,-1);
-    draw_text(room_width-64,64,t);
+    draw_text(global.GUIwidth-64,64,t);
     var spacing;spacing=32;
     for(i=0;i<global.numDebugSnaps;i+=1){
         if(highlight==i) draw_set_color(c_yellow);
-        draw_text(room_width-64,64+spacing*(i+1),global.debugSnaps[i]);
+        draw_text(global.GUIwidth-64,64+spacing*(i+1),global.debugSnaps[i]);
         draw_set_color(c_white);
-        var markPosition;markPosition=lerp(32,room_width-32,(global.debugSnaps[i]-startTiming)/(endTiming-startTiming));
+        var markPosition;markPosition=lerp(32,global.GUIwidth-32,(global.debugSnaps[i]-startTiming)/(endTiming-startTiming));
         draw_set_alpha(0.7);
         draw_rectangle_color(markPosition-0.8,32+8-12,markPosition+0.8,32+8+12,c_white,c_white,c_white,c_white,0);
         draw_set_alpha(1);
     }
     highlight=-1;
-
     ///Draw a semi-transparent tick, as well as a text indicator on the cursor's position if it's close enough to the timeline
     if(timeline_selected)
     {
-        var markPosition;markPosition=mouse_x-view_xview[0];
+        var markPosition;markPosition=mousex;
         draw_set_alpha(0.5);
         draw_rectangle_color(markPosition-0.8,32+8-12,markPosition+0.8,32+8+12,c_white,c_white,c_white,c_white,0);
 
-        var trackPos;trackPos=lerp(startTiming,endTiming,(mouse_x-32)/(room_width-64))
+        var trackPos;trackPos=lerp(startTiming,endTiming,(mousex-32)/(global.GUIwidth-64))
         draw_text(markPosition,64,string(floor(trackPos)));
 
         draw_set_alpha(1);
