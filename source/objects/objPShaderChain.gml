@@ -21,7 +21,7 @@ action_id=603
 applies_to=self
 */
 ///Clean up
-if(surface_exists(surf)) surface_free(surf);
+if(surface_exists(surf1)) surface_free(surf1);
 if(surface_exists(surf2)) surface_free(surf2);
 #define Step_0
 /*"/*'/**//* YYD ACTION
