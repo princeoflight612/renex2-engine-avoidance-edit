@@ -373,7 +373,7 @@ avoidance_add_attack
 avoidance_add_debug_key
 avoidance_jump_to_timing
 instance_change_variable
-tween_linear
+
 
 rlerp
 draw_set_align
