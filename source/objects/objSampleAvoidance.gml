@@ -101,7 +101,7 @@ applies_to=self
 
 timeline_selected = false;
 timeline_snapping = true; //set to snap to the start of the nearest attack
-timeline_snapping_window=16; //a window in frames
+timeline_snapping_window = 8; //a window in pixels on the timeline in which the cursor gets snapped
 #define Destroy_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -135,80 +135,6 @@ if(attack<numTimings-1){
     if(t>ds_list_find_value(attackTimings,attack+1)){
         attack+=1;
     }
-}
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-///Debug timeline and keys
-
-var mousex;mousex=mouse_room_x();
-var mousey;mousey=mouse_room_y();
-
-///TODO change the cursor sprite to an indicator on the debug bar when hovering above it
-///TODO implement snapping to the start of the nearest attack which would set the timer to attackTiming-1
-if(!global.release_mode){
-    if(keyboard_check_pressed(ord("T"))) global.displayDebugTimeline = !global.displayDebugTimeline; //Toggle the debug timeline via the T key
-
-
-    if(keyboard_check_pressed(vk_space)){ //Set a debug snap on SPACE
-        global.debugSnaps[global.numDebugSnaps]=t;
-        global.numDebugSnaps+=1;
-        show_debug_message(string(t));
-    }
-    if(point_in_rectangle(mousex,mousey,32+8-12,0,room_width-32,32+8+12)){ //Navigate the timeline by clicking on it
-        if(!timeline_selected)
-        {
-            timeline_selected = true;
-            window_set_cursor(cr_none);
-        }
-        if(mouse_check_button_pressed(mb_left))
-        {
-
-
-            var trackPos;trackPos=lerp(startTiming,endTiming,(mousex-32)/(room_width-64))
-
-            if(timeline_snapping)
-            {
-
-            }
-            avoidance_jump_to_timing(trackPos);
-        }
-    }else
-    {
-        if(timeline_selected)
-        {
-            timeline_selected = false;
-            window_set_cursor(cr_default);
-        }
-    }
-
-    //Jump to a debug snap by clicking on it
-    var spacing;spacing = 32;
-    for(i=0;i<global.numDebugSnaps;i+=1){
-        var snapX;snapX=room_width-64;
-        var snapY;snapY=64+spacing*(i+1)
-        if(point_in_rectangle(mousex,mousey,snapX,snapY,snapX+64,snapY+spacing)){
-            highlight=i;
-            if(mouse_check_button_pressed(mb_left)){
-                var trackPos;trackPos = global.debugSnaps[i];
-                avoidance_jump_to_timing(trackPos);
-            }
-        }
-    }
-    //User made debug keys
-    for(i=0;i<numDebugKeys;i+=1){
-        if(keyboard_check_pressed(ds_list_find_value(debugKeys,i))){
-            var trackPos;trackPos = ds_list_find_value(debugKeyTimings,i);
-            avoidance_jump_to_timing(trackPos);
-            with(player){
-                if(ds_list_find_value(other.debugKeyStartX,i)!=-1) x = ds_list_find_value(other.debugKeyStartX,i);
-                if(ds_list_find_value(other.debugKeyStartY,i)!=-1) x = ds_list_find_value(other.debugKeyStartY,i);
-            }
-        }
-    }
-
 }
 /*"/*'/**//* YYD ACTION
 lib_id=1
@@ -274,6 +200,89 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+///Debug timeline and keys
+
+mousex=mouse_room_x();
+mousey=mouse_room_y();
+
+///TODO change the cursor sprite to an indicator on the debug bar when hovering above it
+///TODO implement snapping to the start of the nearest attack which would set the timer to attackTiming-1
+if(!global.release_mode){
+    if(keyboard_check_pressed(ord("T"))) global.displayDebugTimeline = !global.displayDebugTimeline; //Toggle the debug timeline via the T key
+
+
+    if(keyboard_check_pressed(vk_space)){ //Set a debug snap on SPACE
+        global.debugSnaps[global.numDebugSnaps]=t;
+        global.numDebugSnaps+=1;
+        show_debug_message(string(t));
+    }
+    if(point_in_rectangle(mousex,mousey,32+8-12,0,global.GUIwidth-32,32+8+12)){ //Navigate the timeline by clicking on it
+        if(!timeline_selected)
+        {
+            timeline_selected = true;
+            window_set_cursor(cr_none);
+        }
+
+        if(timeline_snapping)
+        {
+            var n;n=ds_list_size(attackTimings);
+            for(i=0;i<n;i+=1)
+            {
+                var _snap_pos; _snap_pos =  lerp(32,global.GUIwidth-64,rlerp(startTiming,endTiming,ds_list_find_value(attackTimings,i)-1));
+                if(abs(mousex-_snap_pos)<timeline_snapping_window)
+                {
+                    mousex=_snap_pos;
+                    break;
+                }
+            }
+        }
+
+        if(mouse_check_button_pressed(mb_left))
+        {
+            var trackPos;trackPos=lerp(startTiming,endTiming,(mousex-32)/(global.GUIwidth-64));
+
+            avoidance_jump_to_timing(trackPos);
+        }
+    }else
+    {
+        if(timeline_selected)
+        {
+            timeline_selected = false;
+            window_set_cursor(cr_default);
+        }
+    }
+
+    //Jump to a debug snap by clicking on it
+    var spacing;spacing = 32;
+    for(i=0;i<global.numDebugSnaps;i+=1){
+        var snapX;snapX=global.GUIwidth-64;
+        var snapY;snapY=64+spacing*(i+1)
+        if(point_in_rectangle(mousex,mousey,snapX,snapY,snapX+64,snapY+spacing)){
+            highlight=i;
+            if(mouse_check_button_pressed(mb_left)){
+                var trackPos;trackPos = global.debugSnaps[i];
+                avoidance_jump_to_timing(trackPos);
+            }
+        }
+    }
+    //User made debug keys
+    for(i=0;i<numDebugKeys;i+=1){
+        if(keyboard_check_pressed(ds_list_find_value(debugKeys,i))){
+            var trackPos;trackPos = ds_list_find_value(debugKeyTimings,i);
+            avoidance_jump_to_timing(trackPos);
+            with(player){
+                if(ds_list_find_value(other.debugKeyStartX,i)!=-1) x = ds_list_find_value(other.debugKeyStartX,i);
+                if(ds_list_find_value(other.debugKeyStartY,i)!=-1) x = ds_list_find_value(other.debugKeyStartY,i);
+            }
+        }
+    }
+
+}
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
 ///Anti-desync - set RealStep according to music time
 
 
@@ -308,7 +317,7 @@ applies_to=self
 */
 ///Debug timeline
 
-var mousex;mousex=mouse_room_x();
+
 ///TODO implement a transparent hovering cursor
 if(!global.release_mode&&global.displayDebugTimeline){
     draw_set_alpha(1);
@@ -317,7 +326,7 @@ if(!global.release_mode&&global.displayDebugTimeline){
     var barPosition;barPosition=lerp(32,global.GUIwidth-32,(t-startTiming)/(endTiming-startTiming));
     draw_rectangle_color(barPosition-0.5,32+8-16,barPosition+0.5,32+8+16,c_white,c_white,c_white,c_white,0);
     for(i=0;i<numTimings;i+=1){ //Display attack timings
-        var markPosition;markPosition=lerp(32,global.GUIwidth-32,(ds_list_find_value(attackTimings,i)-startTiming)/(endTiming-startTiming));
+        var markPosition;markPosition=lerp(32,global.GUIwidth-64,(ds_list_find_value(attackTimings,i)-startTiming)/(endTiming-startTiming));
 
         draw_set_alpha(0.7);
         draw_rectangle_color(markPosition-1.0,32+8-16,markPosition+1.0,32+8+16,c_white,c_white,c_white,c_white,0);
@@ -332,7 +341,7 @@ if(!global.release_mode&&global.displayDebugTimeline){
         if(highlight==i) draw_set_color(c_yellow);
         draw_text(global.GUIwidth-64,64+spacing*(i+1),global.debugSnaps[i]);
         draw_set_color(c_white);
-        var markPosition;markPosition=lerp(32,global.GUIwidth-32,(global.debugSnaps[i]-startTiming)/(endTiming-startTiming));
+        var markPosition;markPosition=lerp(32,global.GUIwidth-64,(global.debugSnaps[i]-startTiming)/(endTiming-startTiming));
         draw_set_alpha(0.7);
         draw_rectangle_color(markPosition-0.8,32+8-12,markPosition+0.8,32+8+12,c_white,c_white,c_white,c_white,0);
         draw_set_alpha(1);
