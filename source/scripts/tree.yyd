@@ -22,6 +22,8 @@
 		|instance_move_to_polar
 		|instance_move_to
 		|instance_morph
+		|instance_fade_out
+		|instance_shrink_out
 		|instance_scale
 	+Avoidance Timing
 		|avoidance_add_debug_key

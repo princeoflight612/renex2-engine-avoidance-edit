@@ -509,6 +509,8 @@
 		|objMoveToPolarCommand
 		|objMoveCommand
 		|objMorphCommand
+		|objShrinkCommand
+		|objFadeCommand
 		|objScaleCommand
 	+Shader Manipulation
 		|objPShaderChainElement

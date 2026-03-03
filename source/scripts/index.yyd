@@ -404,3 +404,5 @@ shEasyShaderExample
 spawn_3D_circle
 spawn_3D_shape
 instance_morph
+instance_fade_out
+instance_shrink_out
