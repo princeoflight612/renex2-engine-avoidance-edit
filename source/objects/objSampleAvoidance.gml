@@ -149,13 +149,15 @@ var BT;BT=BEAT_TIME;
 if(!instance_exists(Player)) exit;
 
 switch(ds_list_find_value(attackNames,attack)){ //Main attack loop
-    case "ATTACK1":
+    case "ATTACK1": ///Demo attacks
     {
         if(ct==1)
         {
+            ///Spawn a 3d shape
             shader_push(shEasyShaderExample(),0.005);
             var a;a =spawn_3D_circle(400,304,sprAvoidanceBulletSmall,0,200,0,0.5,24,"3D_CIRCLE_TEST");
             a.dTheta=1;
+            camera_shake(8,8);
         }
         break;
     }
@@ -164,15 +166,24 @@ switch(ds_list_find_value(attackNames,attack)){ //Main attack loop
         if(ct==1)
         {
             shader_pop();
-            with(objAvoidance3DShape)
+            with(objAvoidance3DShape) ///Morph the 3d shape
             {
                 instance_morph(id,shaper_flower,4,100,tween_linear);
             }
+            camera_shake(8,8);
         }
         break;
     }
     case "ATTACK3":
     {
+        if(ct==1)
+        {
+            ///Scale the 3D shape with elastic easing
+            with(objAvoidance3DShape) ///Morph the 3d shape
+            {
+                instance_scale(id,1.5*image_xscale,50,tween_elastic_out);
+            }
+        }
         break;
     }
     case "END":
