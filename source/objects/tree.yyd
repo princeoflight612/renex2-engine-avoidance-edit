@@ -511,6 +511,7 @@
 		|objMorphCommand
 		|objShrinkCommand
 		|objFadeCommand
+		|objDelayedExecutionCommand
 		|objScaleCommand
 	+Shader Manipulation
 		|objPShaderChainElement

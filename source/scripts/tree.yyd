@@ -24,6 +24,7 @@
 		|instance_morph
 		|instance_fade_out
 		|instance_shrink_out
+		|script_execute_delayed
 		|instance_scale
 	+Avoidance Timing
 		|avoidance_add_debug_key

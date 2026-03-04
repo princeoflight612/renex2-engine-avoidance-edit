@@ -513,3 +513,4 @@ objMorphCommand
 
 objShrinkCommand
 objFadeCommand
+objDelayedExecutionCommand
