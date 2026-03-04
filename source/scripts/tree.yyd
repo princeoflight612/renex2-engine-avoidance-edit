@@ -50,6 +50,8 @@
 	+Avoidance Utility
 		|spawn_3D_shape
 		|spawn_3D_circle
+		|on_beat
+		|spawn_shape
 |engine_settings
 +CUSTOM
 	+game options

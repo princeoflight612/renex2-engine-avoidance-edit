@@ -184,6 +184,9 @@ switch(ds_list_find_value(attackNames,attack)){ //Main attack loop
                 instance_scale(id,1.5*image_xscale,50,tween_elastic_out);
             }
         }
+        if(on_beat(ct,3*BT)){
+            spawn_shape(400,304, random(360),6,36,6,objAvoidanceBullet,"flower",shaper_flower);
+        }
         break;
     }
     case "END":

@@ -15,7 +15,7 @@ applies_to=self
 image_speed=0;
 killer=true;
 trail=true;
-image_index=3;
+
 destroyOutside=false;
 
 drawTag=false;

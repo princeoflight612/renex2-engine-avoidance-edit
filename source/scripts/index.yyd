@@ -407,3 +407,5 @@ instance_morph
 instance_fade_out
 instance_shrink_out
 script_execute_delayed
+spawn_shape
+on_beat
