@@ -14,7 +14,6 @@
 	|Button
 	|ButtonShoot
 	|Boss
-	|Avoidance
 	|Gizmo
 	|Trap
 	|TrapSave
@@ -399,12 +398,6 @@
 		|FireDemo
 		|GlassShard
 		|TouhouDeath
-	+Miku
-		|Miku
-		|MikuFront
-		|MikuLeek
-		|MikuBigCherryBlue
-		|MikuBounceCherry
 	|BossIntroduction
 	|BossHealthbarClassic
 	|BossHealthbarNew

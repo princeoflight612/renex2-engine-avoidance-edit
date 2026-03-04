@@ -234,12 +234,12 @@ camera_get_borders
 input_anykey_pressed
 trigger_broadcast
 
-timeline_miku
+
 wait_timer
 sound_play_synced
 split_object
 
-timeline_miku_front
+
 savedatap
 persist_hash
 emit_prop_blood

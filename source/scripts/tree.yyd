@@ -346,8 +346,6 @@
 	|draw_set_align
 	|make_afterimage
 +avoidance/miku
-	|timeline_miku
-	|timeline_miku_front
 	|wait_timer
 	|rtime
 	|random_cherry_color
