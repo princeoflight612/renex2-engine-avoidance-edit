@@ -1,3 +1,5 @@
+|TUTORIAL_YourFirstAvoidance
+|engine_settings
 +Prince Avoidance
 	+Easing
 		|tween_back_in
@@ -52,7 +54,6 @@
 		|spawn_3D_circle
 		|on_beat
 		|spawn_shape
-|engine_settings
 +CUSTOM
 	+game options
 		|custom_options

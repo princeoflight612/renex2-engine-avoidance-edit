@@ -409,3 +409,4 @@ instance_shrink_out
 script_execute_delayed
 spawn_shape
 on_beat
+TUTORIAL_YourFirstAvoidance
