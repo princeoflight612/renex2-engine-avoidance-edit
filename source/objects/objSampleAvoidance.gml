@@ -301,6 +301,15 @@ applies_to=self
 
 
 RealStep += room_speed * delta_time / 1000000;
+#define Other_4
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/*desc
+The avoidance controller object.
+*/
 #define Other_10
 /*"/*'/**//* YYD ACTION
 lib_id=1

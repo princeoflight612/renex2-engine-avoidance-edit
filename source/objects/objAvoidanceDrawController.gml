@@ -5,7 +5,6 @@ action_id=603
 applies_to=self
 */
 additive=true;
-
 t=0;
 #define Step_0
 /*"/*'/**//* YYD ACTION
@@ -14,6 +13,18 @@ action_id=603
 applies_to=self
 */
 t+=1;
+#define Other_4
+/*"/*'/**//* YYD ACTION
+lib_id=1
+action_id=603
+applies_to=self
+*/
+/*desc
+Controls the drawing of all of the avoidance bullets and cosmetic objects.
+Must exist in the room, otherwise avoidance bullets will be invisible.
+*/
+
+//field additive: true - use additive blending
 #define Draw_0
 /*"/*'/**//* YYD ACTION
 lib_id=1
