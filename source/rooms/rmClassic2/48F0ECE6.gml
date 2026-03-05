@@ -1,3 +1,3 @@
 //gm82 fields begin
-roomTo=rmMiku
+roomTo=rmAvoidanceTemplate
 //gm82 fields end
